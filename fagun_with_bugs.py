@@ -44,10 +44,10 @@ def logo():
 def menu():
     logo()
     print("""
-        1-) Normal Scanning
-        2-) Firewall Bypass
-        3-) Vulnerability Scanning
-        u-) Update
+        1-) Normal Fagun Scanning
+        2-) Firewall Bypass Scanning
+        3-) Fagun Vulnerability Scanning
+        u-) Update Me
         0-) Exit
     """)
 
