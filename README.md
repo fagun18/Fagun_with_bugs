@@ -1,6 +1,8 @@
 # Fagun with Bugs 🌐🔍
 
-[![Fagun with Bugs Logo](https://instagram.fdac14-1.fna.fbcdn.net/v/t51.2885-19/399563165_783491390212793_3831279392301974985_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fdac14-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=IonRhRjDA0UAX8usY0z&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfA7DVjQ-IW9z7NUT_QpbIVdRLLajrSfVfTHnxNBAkmE1w&oe=65528B4D&_nc_sid=ee9879)](https://yourwebsite.com)
+<div align="center">
+  <img src="https://instagram.fdac14-1.fna.fbcdn.net/v/t51.2885-19/399563165_783491390212793_3831279392301974985_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fdac14-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=IonRhRjDA0UAX8usY0z&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfA7DVjQ-IW9z7NUT_QpbIVdRLLajrSfVfTHnxNBAkmE1w&oe=65528B4D&_nc_sid=ee9879" alt="Fagun with Bugs Logo">
+</div>
 
 
 Fagun with Bugs is an advanced network scanning tool tailored for cybersecurity professionals and enthusiasts. Developed by Fagun, this powerful toolkit provides a comprehensive set of features and advanced scanning options for identifying vulnerabilities and security issues in networked systems.
