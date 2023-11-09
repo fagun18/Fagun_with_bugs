@@ -48,3 +48,39 @@ To embark on an advanced network scanning expedition with Fagun with Bugs, follo
 
    ```bash
    git clone https://github.com/fagun18/Fagun_with_Bugs.git
+   ```
+
+2. Navigate to the cloned directory:
+
+  ```bash
+cd Fagun_with_Bugs
+  ```
+
+3. Execute the tool:
+
+ ```bash
+sudo python3 Fagun_with_Bugs.py
+ ```
+
+
+You will be ushered into a main menu that unveils a plethora of advanced scanning options. Carefully select the one that aligns with your specific requirements.
+
+
+**Advanced Scanning Options 📊**
+
+Fagun with Bugs bestows an array of advanced scanning options, specifically tailored for the cybersecurity connoisseur, including but not limited to:
+
+- Default Scanning: An extensive scan that offers granular control over top ports.
+- Host Discovery: A powerful feature for revealing hidden hosts within complex networks.
+- Port Scanning: Advanced scanning techniques to identify open ports with pinpoint accuracy.
+- Vulnerability Scanning: The crown jewel of Fagun with Bugs, employing specialized Nmap scripts for meticulous vulnerability detection.
+- Firewall Bypass: Elite-level scrutiny of firewall security through a comprehensive suite of Nmap scripts.
+- And an array of advanced features catering to the most intricate of scanning needs!
+
+  **Conclusion 📈**
+  Fagun with Bugs stands as the epitome of an advanced network scanning tool, offering a holistic approach to uncovering vulnerabilities and security intricacies within target systems. With its user-friendly yet advanced interface and a vast selection of scanning options, it proves to be an invaluable asset for both seasoned cybersecurity professionals and passionate newcomers. Nonetheless, a word of caution: the responsible and ethical use of this tool is paramount. Ensure that your scanning activities are conducted only on systems for which explicit permission has been granted. Embark on your advanced scanning journey with confidence, keeping your systems secure while exploring the intricate realm of network security. 🔒💻💂‍♂️🛡️
+
+  **Disclaimer:**
+
+   This tool should be used responsibly and only on systems for which you have explicit permission to scan. The developers and contributors are not responsible for any unauthorized or malicious use of this tool.
+
