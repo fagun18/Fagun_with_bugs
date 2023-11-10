@@ -1,31 +1,47 @@
-#!/usr/bin/python
-
 import sys
 import os
 import time
 import signal
+from time import sleep
+from sys import argv
+from platform import system
+yes = ['Y','y']
+defaultportscan = "50";
 
-yes = ['Y', 'y']
-default_port_scan = "50"
 
-# Function to handle CTRL+C
+def darkmenu():
+    print("\n \033[1;91m your output file is in your current directory \033[1;m")
+    os.system("pwd")
+    print(" \033[1;91m Your current directory \033[1;m")
+    print("\n \033[1;91m1-) Back to Main Menu \n 2-) Exit \033[1;m")
+    choicedonus = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
+    if choicedonus == "1":
+        os.system("clear")
+        Fagun_with_Bugs()
+    if choicedonus == "2":
+        os.system("clear")
+        print(" \033[1;91m@Good Bye !! Happy Hacking !!\033[1;m")
+        sys.exit()
+    else:
+        print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
+        time.sleep(2)
+        Fagun_with_Bugs()
+
+
 def sigint_handler(signum, frame):
     os.system("clear")
     print("CTRL+C detected!")
-    print("\033[1;91mGood Bye!! Happy Hacking!!\033[1;m")
+    print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
     sys.exit()
 
-# Set up the CTRL+C signal handler
+
 signal.signal(signal.SIGINT, sigint_handler)
 
-# Clear the screen
 os.system("clear")
 
-# Logo function with your details
-# Updated logo function with Fagun and Bug Emoji
+
 def logo():
     print("""
-
 ('-.                                 .-') _        (`\ .-') /`        .-') _    ('-. .-.     .-. .-')                             .-')    
            ( OO ).-.                            ( OO ) )        `.( OO ),'       (  OO) )  ( OO )  /     \  ( OO )                           ( OO ).  
    ,------./ . --. /  ,----.    ,--. ,--.   ,--./ ,--,'      ,--./  .--.  ,-.-') /     '._ ,--. ,--.      ;-----.\  ,--. ,--.     ,----.    (_)---\_) 
@@ -40,147 +56,35 @@ def logo():
      \033[1;92mFagun\033[0m 🐞 with \033[1;92mBugs\033[0m
     """)
 
-# Main menu function
+
+
 def menu():
     logo()
     print("""
-        1-) Normal Fagun Scanning
-        2-) Firewall Bypass Scanning
+        1-) Fagun Normal Scanning
+        2-) Fagun Firewall Scanning
         3-) Fagun Vulnerability Scanning
-        u-) Update Me
+        4-) Fagun SQA Testing Tools 
+        u-) Update
+        00-) Contact with Me 
         0-) Exit
-    """)
-
-# Fagun_with_Bugs menu function
-def fagun_with_bugs_menu():
-    print("\n \033[1;91m Your output file is in your current directory \033[1;m")
-    os.system("pwd")
-    print(" \033[1;91m Your current directory \033[1;m")
-    print("\n \033[1;91m1-) Back to Main Menu \n 2-) Exit \033[1;m")
-    choice_donus = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
-    if choice_donus == "1":
-        os.system("clear")
-        fagun_with_bugs()
-    elif choice_donus == "2":
-        os.system("clear")
-        print(" \033[1;91m@Good Bye !! Happy Hacking !!\033[1;m")
-        sys.exit()
-    else:
-        print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
-        time.sleep(2)
-        fagun_with_bugs()
-
-# Vulnerability Scanning function
-def vul():
-    print("Starting Vulnerability Scanning...")
-    time.sleep(1)
-    os.system("clear")
-    logo()
-    print("     Enter your IP address (0.0.0.0) or example.com")
-    print("")
-    vuln_target = input(" Enter Your Target: ")
-
-    if not vuln_target:
-        print("Please Enter a Target")
-        print("\033[1;91mYou are grounded! Returning to the main menu...\033[1;m")
-        time.sleep(2)
-        os.system("clear")
-        fagun_with_bugs()
-    else:
-        os.system("nmap -vv -sV --script vuln " + vuln_target + " -oN VulnerabilityScan-" + vuln_target + "-output")
-
-    fagun_with_bugs()
-
-# Rest of your functions...
-
-# Fagun_with_Bugs main function
-def fagun_with_bugs():
-    menu()
-    choice = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
-    os.system('clear')
-
-    if choice == "1":
-        udpscan()
-    elif choice == "2":
-        firewall()
-    elif choice == "3":
-        vul()
-    elif choice == "u":
-        update()
-    elif choice == "00":
-        credit()
-    elif choice == "0":
-        exit()
-    elif choice == "":
-        menu()
-    else:
-        print("Please enter one of the options in the menu.\nYou are directed to the main menu.")
-        time.sleep(2)
-        fagun_with_bugs()
-
-
-# Fagun_with_Bugs main function
-def fagun_with_bugs():
-    menu()
-    choice = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
-    os.system('clear')
-
-    if choice == "1":
-        udpscan()
-    elif choice == "2":
-        firewall()
-    elif choice == "3":
-        vul()
-    elif choice == "u":
-        update()
-    elif choice == "00":
-        credit()
-    elif choice == "0":
-        exit()
-    elif choice == "":
-        menu()
-    else:
-        print("Please enter one of the options in the menu.\nYou are directed to the main menu.")
-        time.sleep(2)
-        fagun_with_bugs()
-
-
-
-
-
-# Vulnerability Scanning function
-def vul():
-    print("Starting Vulnerability Scanning...")
-    time.sleep(1)
-    os.system("clear")
-    logo()
-    print("     Enter your IP address (0.0.0.0) or example.com")
-    print("")
-    vuln_target = input(" Enter Your Target: ")
-
-    if not vuln_target:
-        print("Please Enter a Target")
-        print("\033[1;91mYou are grounded! Returning to the main menu...\033[1;m")
-        time.sleep(2)
-        os.system("clear")
-        Fagun_with_Bugs()
-    else:
-        os.system("nmap -vv -sV --script vuln " + vuln_target + " -oN VulnerabilityScan-" + vuln_target + "-output")
-
-    darkmenu()
+        """)
 
 
 def Fagun_with_Bugs():
     menu()
-    choice = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
-    os.system('clear')
 
+    choice = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
+
+    os.system('clear')
     if choice == "1":
-        udpscan()
+        dscan()
     elif choice == "2":
         firewall()
     elif choice == "3":
         vul()
+    elif choice == "4":
+        sqa()
     elif choice == "u":
         update()
     elif choice == "00":
@@ -190,8 +94,137 @@ def Fagun_with_Bugs():
     elif choice == "":
         menu()
     else:
-        print("Please enter one of the options in the menu.\nYou are directed to the main menu.")
+        print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
         time.sleep(2)
+        Fagun_with_Bugs()
+
+
+def dscan():
+    os.system("clear")
+    logo()
+    print("""
+        1-) Fagun Default Scan
+        2-) Fagun Host Discovery
+        3-) Fagun Port(SYN) Scan
+        4-) Fagun Port(TCP) Scan
+        5-) Fagun Port(UDP) Scan
+        6-) Fagun Null scan (-sN)
+        7-) Fagun FIN scan (-sF)
+        8-) Fagun OS Analysis and Version Discovery
+        9-) Fagun Nmap Script Engineering (default)
+        00-) Back to Menu
+        """)
+
+    choicedscan = input("root""\033[1;91m@DScan:~$\033[1;m ")
+    os.system('clear')
+    if choicedscan == "1":
+        os.system('clear')
+        ds()
+    if choicedscan == "2":
+        os.system('clear')
+        hd()
+    if choicedscan == '3':
+        os.system('clear')
+        synscan()
+    if choicedscan == "4":
+        os.system('clear')
+        tcpscan()
+    if choicedscan == "5":
+        os.system('clear')
+        udpscan()
+    if choicedscan == "6":
+        os.system('clear')
+        nullscan()
+    if choicedscan == "7":
+        os.system('clear')
+        finscan()
+    if choicedscan == "8":
+        os.system('clear')
+        oavd()
+    if choicedscan == "9":
+        os.system('clear')
+        nse()
+    elif choicedscan == "00":
+        Fagun_with_Bugs()
+
+
+def firewall():
+    os.system("clear")
+    logo()
+    print("""
+        1-) Fagun Script Bypass (--script=firewall-bypass)
+        2-) Fagun Data Length (--data-length <number> )
+        3-) Fagun Smash (-ff)
+        00-) Back to Menu
+        """)
+
+    choicefirewall = input("root""\033[1;91m@FirewallBypass:~$\033[1;m ")
+    os.system('clear')
+    if choicefirewall == "1":
+        os.system('clear')
+        sb()
+    if choicefirewall == "2":
+        os.system('clear')
+        dl()
+    if choicefirewall == '3':
+        os.system('clear')
+        smash()
+    elif choicefirewall == "00":
+        Fagun_with_Bugs()
+
+
+def vul():
+    os.system("clear")
+    logo()
+    print("""
+        1-) Fagun Default Vuln Scan (--script vuln)
+        2-) Fagun FTP Vuln Scan
+        3-) Fagun SMB Vuln Scan
+        4-) Fagun HTTP Vuln Scan
+        5-) Fagun Special SQL Injection Vuln Scan
+        6-) Fagun Stored XSS Vuln Scan
+        7-) Fagun Dom Based XSS vuln Scan
+        00-) Back to Menu
+        """)
+
+    choicevul = input("root""\033[1;91m@VulnerabilityScanning:~$\033[1;m ")
+    os.system('clear')
+    if choicevul == "1":
+        os.system('clear')
+        dvs()
+    if choicevul == "2":
+        os.system('clear')
+        ftpvulscan()
+    if choicevul == '3':
+        os.system('clear')
+        smbvulscan()
+    if choicevul == "4":
+        os.system('clear')
+        httpvulscan()
+    if choicevul == "5":
+        os.system('clear')
+        sqlvulscan()
+    if choicevul == "6":
+        os.system('clear')
+        storedxssscan()
+    if choicevul == "7":
+        os.system('clear')
+        domxssscan()
+    elif choicevul == "00":
+        Fagun_with_Bugs()
+
+def sqa():
+    os.system("clear")
+    logo()
+    print("""Coming Soon - follow on LinkedIn for get update: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+
+    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
+    os.system('clear')
+
+    if choicesqa == "00":
         Fagun_with_Bugs()
 
 
@@ -199,9 +232,9 @@ def update():
     print("This Tool is Only Available for Linux and Similar Systems. ")
     choiceupdate = input("Continue Y / N: ")
     if choiceupdate in yes:
-        os.system("git clone https://github.com/fagun18/Fagun_with_Bugs.git")
+        os.system("git clone https://github.com/fagun18/Fagun_with_bugs.git")
         os.system("cd Fagun_with_Bugs ")
-        os.system("python3 Fagun_with_Bugs.py")
+        os.system("python3 fagun_with_bugs.py")
 
 
 def ds():
@@ -321,12 +354,11 @@ def udpscan():
         topport5 = input("Top Port? Example: 10 or 50, Default 50:  ")
         if not topport5:
             os.system(
-                "nmap -vv -sU --top-ports=" + defaultportscan + " " + beshedef + " -oN UdpScan-" + beshedef + "-output")
+                "nmap -vv –sU --top-ports=" + defaultportscan + " " + beshedef + " -oN UdpScan-" + beshedef + "-output")
         else:
-            os.system("nmap -vv -sU --top-ports=" + topport5 + " " + beshedef + " -oN UdpScan-" + beshedef + "-output")
+            os.system("nmap -vv –sU --top-ports=" + topport5 + " " + beshedef + " -oN UdpScan-" + beshedef + "-output")
 
     darkmenu()
-
 
 
 def nullscan():
@@ -434,8 +466,8 @@ def nse():
 
 
 # firewall bypass
-def firewall():
-    print("Starting Firewall Bypass ")
+def sb():
+    print("Starting Nmap Scripting Firewall Bypass ")
     time.sleep(1)
     os.system("clear")
     logo()
@@ -452,13 +484,12 @@ def firewall():
         topport10 = input("Top Port? Example: 10 or 50, Default 50:  ")
         if not topport10:
             os.system(
-                "nmap -vv --script=firewall-bypass --top-ports=" + default_port_scan + " " + onhedef + " -oN " + "firewallbypass-" + onhedef + "-output")
+                "nmap -vv --script=firewall-bypass --top-ports=" + defaultportscan + " " + onhedef + " -oN " + "firewallbaypass-" + onhedef + "-output")
         else:
             os.system(
-                "nmap -vv --script=firewall-bypass --top-ports=" + topport10 + " " + onhedef + " -oN " + "firewallbypass-" + onhedef + "-output")
+                "nmap -vv --script=firewall-bypass --top-ports=" + topport10 + " " + onhedef + " -oN " + "firewallbaypass-" + onhedef + "-output")
 
     darkmenu()
-
 
 
 def dl():
@@ -696,11 +727,58 @@ def domxssscan():
             os.system(
                 "nmap -vv -sV -ff -Pn --top-ports=" + topport19 + " --script=http-dombased-xss.nse " + ondokuzhedef + " -oN " + "DomBasedXSSvuln-" + ondokuzhedef + "-output")
 
-
-def darkmenu():
-    # Add the implementation of the darkmenu function here
-    # You can leave it empty for now or add the desired functionality
-    pass
+    darkmenu()
 
 
-Fagun_with_Bugs()
+def credit():
+    print("""
+('-.                                 .-') _        (`\ .-') /`        .-') _    ('-. .-.     .-. .-')                             .-')    
+           ( OO ).-.                            ( OO ) )        `.( OO ),'       (  OO) )  ( OO )  /     \  ( OO )                           ( OO ).  
+   ,------./ . --. /  ,----.    ,--. ,--.   ,--./ ,--,'      ,--./  .--.  ,-.-') /     '._ ,--. ,--.      ;-----.\  ,--. ,--.     ,----.    (_)---\_) 
+('-| _.---'| \-.  \  '  .-./-') |  | |  |   |   \ |  |\      |      |  |  |  |OO)|'--...__)|  | |  |      | .-.  |  |  | |  |    '  .-./-') /    _ |  
+(OO|(_\  .-'-'  |  | |  |_( O- )|  | | .-') |    \|  | )     |  |   |  |, |  |  \'--.  .--'|   .|  |      | '-' /_) |  | | .-')  |  |_( O- )\  \:` `.  
+/  |  '--.\| |_.'  | |  | .--, \|  |_|( OO )|  .     |/      |  |.'.|  |_)|  |(_/   |  |   |       |      | .-. `.  |  |_|( OO ) |  | .--, \ '..`''.) 
+\_)|  .--' |  .-.  |(|  | '. (_/|  | | `-' /|  |\    |       |         | ,|  |_.'   |  |   |  .-.  |      | '--'  /('  '-'(_.-'  |  '--'  | \       / 
+  \|  |_)  |  | |  | |  '--'  |('  '-'(_.-' |  | \   |       |   ,'.   |(_|  |      |  |   |  | |  |      | '--'  /('  '-'(_.-'  |  '--'  | \       / 
+   `--'    `--' `--'  `------'   `-----'    `--'  `--'       '--'   '--'  `--'      `--'   `--' `--'      `------'   `-----'      `------'   `-----'  
+
+
+     \033[1;92mFagun\033[0m 🐞 with \033[1;92mBugs\033[0m
+                ===================================== 
+          NOTE : For Back To Menu Press 1 OR For Exit Press 2
+       ==========================================================                                                                   
+\033[1;m """)
+
+    print("""
+                 [!] LinkedIn: \033[1;91mhttps://www.linkedin.com/in/mejbaur/\033[1;m\n     
+                 [!] Web Site: \033[1;91mhttps://mbfagun.blogspot.com\033[1;m\n   
+                 [!] Github: \033[1;91mhttps://github.com/fagun18\033[1;m\n   
+                 [!] Newsletter: \033[1;91mhttps://www.linkedin.com/newsletters/7049699805199020032/\033[1;m\n\n """)
+    choicedonus = input("root""\033[1;91m@Credit:~$\033[1;m ")
+    if choicedonus == "1":
+        os.system("clear")
+        Fagun_with_Bugs()
+    if choicedonus == "2":
+        os.system("clear")
+        print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
+        sys.exit()
+    else:
+        print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
+        time.sleep(2)
+        Fagun_with_Bugs()
+
+
+def exit():
+    print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
+    sys.exit()
+
+
+def rootcontrol():
+    if os.geteuid() == 0:
+        Fagun_with_Bugs()
+    else:
+        print("Please run it with root access.")
+        sys.exit()
+
+
+rootcontrol()
