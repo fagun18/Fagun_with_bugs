@@ -1,25 +1,50 @@
 import sys
 import os
-import time
 import signal
 from time import sleep
 from sys import argv
 from platform import system
+import telebot
+import time
+import requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import socket
+
+
 yes = ['Y','y']
 defaultportscan = "50";
 
+Token = '6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98'
+bot = telebot.TeleBot(Token)
 
-def darkmenu():
+
+def rootcontrol():
+    if os.getuid() == 0:
+        print("You have root privileges.")
+    else:
+        print("You do not have root privileges.")
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, "Welcome to Fgaun with Bugs Bot")
+
+
+
+
+
+def dark_menu():
     print("\n \033[1;91m your output file is in your current directory \033[1;m")
-    os.system("pwd")
+    os.system("pwd" if system().lower() != "windows" else "echo %cd%")
     print(" \033[1;91m Your current directory \033[1;m")
     print("\n \033[1;91m1-) Back to Main Menu \n 2-) Exit \033[1;m")
     choicedonus = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
     if choicedonus == "1":
-        os.system("clear")
+        os.system("cls" if system().lower() == "windows" else "clear")
         Fagun_with_Bugs()
     if choicedonus == "2":
-        os.system("clear")
+        os.system("cls" if system().lower() == "windows" else "clear")
         print(" \033[1;91m@Good Bye !! Happy Hacking !!\033[1;m")
         sys.exit()
     else:
@@ -31,7 +56,7 @@ def darkmenu():
 def sigint_handler(signum, frame):
     os.system("clear")
     print("CTRL+C detected!")
-    print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
+    print(" \033[1;91mThank You for Use Fagun With Bugs  !!\033[1;m")
     sys.exit()
 
 
@@ -213,20 +238,6 @@ def vul():
     elif choicevul == "00":
         Fagun_with_Bugs()
 
-def sqa():
-    os.system("clear")
-    logo()
-    print("""Coming Soon - follow on LinkedIn for get update: https://www.linkedin.com/in/mejbaur/
-        00-) Back to Menu
-        """)
-
-
-    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
-    os.system('clear')
-
-    if choicesqa == "00":
-        Fagun_with_Bugs()
-
 
 def update():
     print("This Tool is Only Available for Linux and Similar Systems. ")
@@ -237,8 +248,111 @@ def update():
         os.system("python3 fagun_with_bugs.py")
 
 
+def sqa():
+    os.system("clear")
+    logo()
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        1-) Load Testing
+        2-) Unit Testing
+        3-) Integration Testing
+        4-) System Testing
+        5-) Regression Testing
+        6-) Performance Testing
+        7-) Usability Testing
+        8-) Compatibility Testing
+        9-) User Interface (UI) Testing
+        10-) User Experience (UX) Testing
+        11-) Documentation Testing
+        12. Validation Testing
+        00-) Back to Menu
+        """)
+
+    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
+
+    if choicesqa == "1":
+        load_test()
+    if choicesqa == "2":
+        unit_test()
+    if choicesqa == "3":
+        integration_test()
+    if choicesqa == "4":
+        system_test()
+    if choicesqa == "5":
+        Regression_test()
+    if choicesqa == "6":
+        performance_test()
+    if choicesqa == "7":
+        Usability_test()
+    if choicesqa == "8":
+        Compatibility_test()
+    if choicesqa == "9":
+        ui_test()
+    if choicesqa == "10":
+        ux_test()
+    if choicesqa == "11":
+        documentation_test()
+    if choicesqa == "12":
+        validation_test()
+    elif choicesqa == "00":
+        Fagun_with_Bugs()  # Make sure you have this function defined or replace it with the appropriate logic.
+
 def ds():
     print(" Starting Default Scan...")
+def load_test():
+    print("Starting Website Load Testing...")
+    time.sleep(1)
+
+    os.system("clear")
+
+    print("Enter the URL of the website you want to test (e.g., http://example.com)")
+    target_url = input("Enter the Target URL: ")
+
+    if not target_url:
+        print("Please enter a target URL.")
+        print("\033[1;91mYou are grounded! Returning to the main menu...\033[1;m")
+        time.sleep(2)
+        os.system("clear")
+        return  # Return to the main menu or exit the function
+
+    num_requests = input("Enter the number of requests (default is 50): ") or 50
+
+    try:
+        num_requests = int(num_requests)
+    except ValueError:
+        print("Invalid input for the number of requests. Using the default value (50).")
+        num_requests = 50
+
+    print(f"Sending {num_requests} requests to {target_url}...")
+
+    responses = []
+
+    for _ in range(num_requests):
+        try:
+            response = requests.get(target_url)
+            responses.append(response)
+        except requests.RequestException as e:
+            print(f"Request failed: {e}")
+
+    print("Website load test completed.")
+
+    # Save the test results to a file
+    save_results(responses, target_url)
+
+def save_results(responses, target_url):
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    filename = f"load_test_results_{timestamp}.txt"
+
+    with open(filename, "w") as file:
+        file.write(f"Load Test Results for {target_url}\n")
+        file.write(f"Timestamp: {timestamp}\n\n")
+
+        for i, response in enumerate(responses, start=1):
+            file.write(f"Request {i}:\n")
+            file.write(f"Status Code: {response.status_code}\n")
+            file.write(f"Content Length: {len(response.text)} bytes\n\n")
+
+    print(f"Test results saved to {filename}")
+
     time.sleep(1)
     os.system("clear")
     logo()
@@ -259,6 +373,320 @@ def ds():
             os.system("nmap -vv --top-ports=" + topport1 + " " + birhedef + " -oN " + birhedef)
 
     darkmenu()
+
+def unit_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
+
+    if choicesqa == "00":
+        Fagun_with_Bugs()  # Make sure you have this function defined or replace it with the appropriate logic.
+
+def performance_test():
+    print("Starting Performance Testing...")
+    time.sleep(1)
+
+    os.system("clear")
+
+    print("Enter the URL of the API or endpoint you want to test (e.g., http://api.example.com)")
+    target_url = input("Enter the Target URL: ")
+
+    if not target_url:
+        print("Please enter a target URL.")
+        print("\033[1;91mYou are grounded! Returning to the main menu...\033[1;m")
+        time.sleep(2)
+        os.system("clear")
+        return  # Return to the main menu or exit the function
+
+    num_requests = input("Enter the number of requests (default is 50): ") or 50
+
+    try:
+        num_requests = int(num_requests)
+    except ValueError:
+        print("Invalid input for the number of requests. Using the default value (50).")
+        num_requests = 50
+
+    concurrency = input("Enter the concurrency level (default is 1): ") or 1
+
+    try:
+        concurrency = int(concurrency)
+    except ValueError:
+        print("Invalid input for concurrency level. Using the default value (1).")
+        concurrency = 1
+
+    print(f"Sending {num_requests} requests to {target_url} with concurrency level {concurrency}...")
+
+    responses = []
+
+    for _ in range(num_requests):
+        try:
+            response = requests.get(target_url)
+            responses.append(response)
+        except requests.RequestException as e:
+            print(f"Request failed: {e}")
+
+    print("Performance test completed.")
+
+    # Save the test results to a file
+    save_results(responses, target_url)
+
+def save_results(responses, target_url):
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    filename = f"performance_test_results_{timestamp}.txt"
+
+    with open(filename, "w") as file:
+        file.write(f"Performance Test Results for {target_url}\n")
+        file.write(f"Timestamp: {timestamp}\n\n")
+
+        for i, response in enumerate(responses, start=1):
+            file.write(f"Request {i}:\n")
+            file.write(f"Status Code: {response.status_code}\n")
+            file.write(f"Content Length: {len(response.text)} bytes\n\n")
+
+    print(f"Test results saved to {filename}")
+
+def integration_test():
+    print("Starting Integration Testing...")
+    time.sleep(1)
+
+    os.system("clear")
+
+    print("Enter the URL of the API or endpoint you want to test (e.g., http://api.example.com)")
+    target_url = input("Enter the Target URL: ")
+
+    if not target_url:
+        print("Please enter a target URL.")
+        print("\033[1;91mYou are grounded! Returning to the main menu...\033[1;m")
+        time.sleep(2)
+        os.system("clear")
+        return  # Return to the main menu or exit the function
+
+    # You can add more configuration options for integration testing if needed
+    # For example, authentication credentials, request headers, etc.
+
+    print(f"Performing Integration Test on {target_url}...")
+
+    # Perform integration test logic here
+    try:
+        response = requests.get(target_url)
+        # Add more assertions or validations based on your integration test requirements
+        assert response.status_code == 200, f"Integration test failed. Expected status code 200, got {response.status_code}"
+        print("Integration test passed.")
+    except requests.RequestException as e:
+        print(f"Integration test failed: {e}")
+
+
+def system_test():
+    print("Starting System Testing...")
+    time.sleep(1)
+
+    os.system("clear")
+
+    test_cases = []
+
+    num_test_cases = int(input("Enter the number of test cases: "))
+
+    for i in range(1, num_test_cases + 1):
+        print(f"\nTest Case {i}:")
+        test_name = input("Enter test case name: ")
+        test_url = input("Enter test URL: ")
+        test_method = input("Enter HTTP method (GET/POST/PUT/DELETE, etc.): ").upper()
+
+        test_data = {}
+        if test_method == "POST":
+            data_input = input("Enter data (if any, in JSON format): ")
+            try:
+                test_data = eval(data_input)  # Safely evaluate input as a dictionary
+            except Exception as e:
+                print(f"Error parsing data input: {e}")
+
+        test_cases.append({"name": test_name, "url": test_url, "method": test_method, "data": test_data})
+
+    print("\nRunning System Tests...")
+
+    for test_case in test_cases:
+        print(f"\nExecuting {test_case['name']}")
+
+        try:
+            if test_case["method"] == "GET":
+                response = requests.get(test_case["url"])
+            elif test_case["method"] == "POST":
+                response = requests.post(test_case["url"], data=test_case["data"])
+            # Add more HTTP methods and corresponding logic as needed
+
+            # Add assertions or validations based on your system test requirements
+            assert response.status_code == 200, f"Test failed. Expected status code 200, got {response.status_code}"
+            print("Test passed.")
+        except requests.RequestException as e:
+            print(f"Test failed: {e}")
+
+    print("\nSystem Testing completed.")
+
+
+def Regression_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+
+def Usability_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+def Compatibility_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+def ui_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
+
+    if choicesqa == "00":
+        Fagun_with_Bugs()  # Make sure you have this function defined or replace it with the appropriate logic.
+
+def ux_test():
+    print("""Coming Soon - follow on LinkedIn for updates: https://www.linkedin.com/in/mejbaur/
+        00-) Back to Menu
+        """)
+
+    choicesqa = input("root""\033[1;91m@DScan:~$\033[1;m ")
+
+    if choicesqa == "00":
+        Fagun_with_Bugs()  # Make sure you have this function defined or replace it with the appropriate logic.
+
+
+def documentation_test():
+    print("Starting Advanced Documentation Testing...")
+
+    documentation_cases = []
+
+    num_documentation_cases = int(input("Enter the number of documentation test cases: "))
+
+    for i in range(1, num_documentation_cases + 1):
+        print(f"\nDocumentation Test Case {i}:")
+        documentation_name = input("Enter documentation test case name: ")  # Example: API Reference
+        documentation_url = input("Enter documentation URL: ")  # Example: http://example.com/api/docs
+
+        # Example expected_keywords: authentication, endpoints, error codes
+        expected_keywords = input("Enter expected keywords or phrases (comma-separated): ").split(',')
+
+        # Example expected_sections: Introduction, Usage, Examples
+        expected_sections = input("Enter expected sections (comma-separated): ").split(',')
+
+        documentation_cases.append({
+            "name": documentation_name,
+            "url": documentation_url,
+            "expected_keywords": [kw.strip().lower() for kw in expected_keywords],
+            "expected_sections": [section.strip() for section in expected_sections]
+        })
+
+    print("\nRunning Advanced Documentation Tests...")
+
+    for documentation_case in documentation_cases:
+        print(f"\nExecuting {documentation_case['name']}")
+
+        try:
+            response = requests.get(documentation_case["url"])
+            response.raise_for_status()
+
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # Check for expected keywords in the documentation
+            for keyword in documentation_case["expected_keywords"]:
+                assert keyword in soup.text.lower(), f"Documentation test failed. Keyword '{keyword}' not found."
+
+            # Check for expected sections in the documentation
+            for section in documentation_case["expected_sections"]:
+                section_heading = soup.find('h2', string=section)
+                assert section_heading, f"Documentation test failed. Section '{section}' not found."
+
+            # Check hyperlinks for validity
+            for a_tag in soup.find_all('a', href=True):
+                link = a_tag['href']
+                if not link.startswith('#') and not link.startswith('http') and not link.startswith('https'):
+                    # Relative link, convert to absolute
+                    link = f"{documentation_case['url'].rstrip('/')}/{link.lstrip('/')}"
+                link_response = requests.head(link)
+                assert link_response.status_code == 200, f"Documentation test failed. Broken link found: {link}"
+
+            print("Documentation test passed.")
+        except requests.RequestException as e:
+            print(f"Documentation test failed: {e}")
+        except Exception as e:
+            print(f"Documentation test failed: {e}")
+
+    print("\nAdvanced Documentation Testing completed.")
+
+
+def validation_test():
+    print("Starting Advanced Validation Testing...")
+
+    validation_cases = []
+
+    num_validation_cases = int(input("Enter the number of validation cases: "))
+
+    for i in range(1, num_validation_cases + 1):
+        print(f"\nValidation Case {i}:")
+        validation_name = input("Enter validation case name: ")  # Example: User Authentication
+        validation_url = input("Enter validation URL: ")  # Example: http://example.com/api/user
+        http_method = input("Enter HTTP method (GET/POST/PUT/DELETE, etc.): ").upper()  # Example: GET
+
+        request_headers = {}
+        headers_input = input(
+            "Enter request headers (if any, in JSON format): ")  # Example: {"Authorization": "Bearer TOKEN"}
+        try:
+            request_headers = json.loads(headers_input)  # Safely parse input as a dictionary
+        except json.JSONDecodeError as e:
+            print(f"Error parsing headers input: {e}")
+
+        validation_data = {}
+        if http_method == "POST":
+            data_input = input(
+                "Enter data (if any, in JSON format): ")  # Example: {"username": "user123", "password": "pass123"}
+            try:
+                validation_data = json.loads(data_input)  # Safely parse input as a dictionary
+            except json.JSONDecodeError as e:
+                print(f"Error parsing data input: {e}")
+
+        expected_status_code = int(input("Enter expected HTTP status code: "))  # Example: 200
+
+        validation_cases.append({
+            "name": validation_name,
+            "url": validation_url,
+            "method": http_method,
+            "headers": request_headers,
+            "data": validation_data,
+            "expected_status_code": expected_status_code
+        })
+
+    print("\nRunning Advanced Validation Tests...")
+
+    for validation_case in validation_cases:
+        print(f"\nExecuting {validation_case['name']}")
+
+        try:
+            if validation_case["method"] == "GET":
+                response = requests.get(validation_case["url"], headers=validation_case["headers"])
+            elif validation_case["method"] == "POST":
+                response = requests.post(validation_case["url"], headers=validation_case["headers"],
+                                         data=json.dumps(validation_case["data"]), json=validation_case["data"])
+            # Add more HTTP methods and corresponding logic as needed
+
+            # Add assertions or validations based on your validation test requirements
+            assert response.status_code == validation_case[
+                "expected_status_code"], f"Validation failed. Expected status code {validation_case['expected_status_code']}, got {response.status_code}"
+            print("Validation passed.")
+        except requests.RequestException as e:
+            print(f"Validation failed: {e}")
+
+    print("\nAdvanced Validation Testing completed.")
 
 
 def hd():
@@ -760,7 +1188,7 @@ def credit():
         Fagun_with_Bugs()
     if choicedonus == "2":
         os.system("clear")
-        print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
+        print(" \033[1;91mThank You for Use Fagun With Bugs !!\033[1;m")
         sys.exit()
     else:
         print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
@@ -769,7 +1197,7 @@ def credit():
 
 
 def exit():
-    print(" \033[1;91mGood Bye !! Happy Hacking !!\033[1;m")
+    print(" \033[1;91mThank You for Use Fagun With Bugs !!\033[1;m")
     sys.exit()
 
 
@@ -782,3 +1210,4 @@ def rootcontrol():
 
 
 rootcontrol()
+bot.polling()
