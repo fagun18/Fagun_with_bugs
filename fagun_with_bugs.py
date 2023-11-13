@@ -1,7 +1,6 @@
 import sys
 import os
 from time import sleep
-from sys import argv
 from platform import system
 import time
 import requests
@@ -11,57 +10,66 @@ from selenium.webdriver.common.keys import Keys
 import socket
 import telebot
 import telegram
+import signal
+from telegram import ReplyKeyboardMarkup, KeyboardButton
 
-TOKEN = "TRON"
-BOT_TOKEN = "6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98"
-
-yes = ['Y', 'y']
-defaultportscan = "50"
-
-Token = '6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98'
-bot = telebot.TeleBot(Token)
-
-
-
-def rootcontrol():
-    if os.getuid() == 0:
-        print("You have root privileges.")
-    else:
-        print("You do not have root privileges.")
+TOKEN = "6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98"
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, "Welcome to Fgaun with Bugs Bot")
+    bot.reply_to(message, "Welcome to Fagun with Bugs Bot")
 
+@bot.message_handler(commands=['menu'])
+def show_menu(message):
+    markup = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True, resize_keyboard=True)
+    buttons = [
+        KeyboardButton("1-) Fagun Normal Scanning"),
+        KeyboardButton("2-) Fagun Firewall Scanning"),
+        KeyboardButton("3-) Fagun Vulnerability Scanning"),
+        KeyboardButton("4-) Fagun SQA Testing Tools"),
+        KeyboardButton("u-) Update"),
+        KeyboardButton("00-) Contact with Me"),
+        KeyboardButton("0-) Exit")
+    ]
+    markup.add(*buttons)
 
+    bot.send_message(message.chat.id, "Choose an option:", reply_markup=markup)
 
-
-
-def dark_menu():
-    print("\n \033[1;91m your output file is in your current directory \033[1;m")
-    os.system("pwd" if system().lower() != "windows" else "echo %cd%")
-    print(" \033[1;91m Your current directory \033[1;m")
-    print("\n \033[1;91m1-) Back to Main Menu \n 2-) Exit \033[1;m")
-    choicedonus = input("root""\033[1;91m@Fagun_with_Bugs:~$\033[1;m ")
-    if choicedonus == "1":
-        os.system("cls" if system().lower() == "windows" else "clear")
-        Fagun_with_Bugs()
-    if choicedonus == "2":
-        os.system("cls" if system().lower() == "windows" else "clear")
-        print(" \033[1;91m@Good Bye !! Happy Hacking !!\033[1;m")
-        sys.exit()
+@bot.message_handler(func=lambda message: True)
+def handle_text(message):
+    if message.text == '1-) Fagun Normal Scanning':
+        bot.send_message(message.chat.id, "Handling option 1")
+        # Implement your logic for option 1 here
+    elif message.text == '2-) Fagun Firewall Scanning':
+        bot.send_message(message.chat.id, "Handling option 2")
+        # Implement your logic for option 2 here
+    elif message.text == '3-) Fagun Vulnerability Scanning':
+        bot.send_message(message.chat.id, "Handling option 3")
+        # Implement your logic for option 3 here
+    elif message.text == '4-) Fagun SQA Testing Tools':
+        bot.send_message(message.chat.id, "Handling option 4")
+        # Implement your logic for option 4 here
+    elif message.text == 'u-) Update':
+        bot.send_message(message.chat.id, "Handling update")
+        # Implement your logic for the update here
+    elif message.text == '00-) Contact with Me':
+        bot.send_message(message.chat.id, "Handling contact")
+        # Implement your logic for contacting here
+    elif message.text.lower() in ('exit', '0-) Exit'):
+        bot.send_message(message.chat.id, "Goodbye! Happy Hacking!")
+        os._exit(0)
     else:
-        print(" Please enter one of the options in the menu. \n You are directed to the main menu.")
-        time.sleep(2)
-        Fagun_with_Bugs()
+        bot.send_message(message.chat.id, "Invalid option. Please choose a valid option from the menu.")
 
+# This is used to start the bot and keep it running
+bot.polling(none_stop=True)
 
 def sigint_handler(signum, frame):
     os.system("clear")
     print("CTRL+C detected!")
     print(" \033[1;91mThank You for Use Fagun With Bugs  !!\033[1;m")
     sys.exit()
-
 
 signal.signal(signal.SIGINT, sigint_handler)
 
