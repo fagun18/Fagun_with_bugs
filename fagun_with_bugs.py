@@ -1,6 +1,5 @@
 import sys
 import os
-import signal
 from time import sleep
 from sys import argv
 from platform import system
@@ -13,17 +12,15 @@ import socket
 import telebot
 import telegram
 
-
 TOKEN = "TRON"
-
 BOT_TOKEN = "6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98"
 
-
-yes = ['Y','y']
-defaultportscan = "50";
+yes = ['Y', 'y']
+defaultportscan = "50"
 
 Token = '6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98'
 bot = telebot.TeleBot(Token)
+
 
 
 def rootcontrol():
