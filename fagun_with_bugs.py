@@ -12,6 +12,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import socket
 
+TOKEN = "TRON"
+
+BOT_TOKEN = "6883208965:AAGVjWzsTiD4dOV-vW-MtB6_BCXaCLHSE98"
+
 
 yes = ['Y','y']
 defaultportscan = "50";
