@@ -21,7 +21,7 @@ Fagun with Bugs is an advanced network scanning tool tailored for cybersecurity 
 
 ## Introduction 🚀
 
-In the ever-evolving landscape of cybersecurity, network scanning is a critical first step towards ensuring the integrity of networked systems. Fagun with Bugs simplifies this process by offering an intuitive interface enriched with advanced scanning options that cater to the most intricate of requirements. 🛡️🖥️
+In the ever-evolving landscape of cybersecurity, network scanning is a critical first step toward ensuring the integrity of networked systems. Fagun with Bugs simplifies this process by offering an intuitive interface enriched with advanced scanning options that cater to the most intricate of requirements. 🛡️🖥️
 
 ## Key Features 🛠️
 
@@ -39,11 +39,15 @@ Fagun with Bugs offers an impressive array of features, honed to perfection for 
 
    Elevate your vulnerability assessment with specialized Nmap scripts designed explicitly for this purpose. Catalog even the most subtle weaknesses in your target systems.
 
-4. **Update 🔄**
+4. **SQA Testing 🌟**
+
+   Test your Target website Testing more easily.
+
+5. **Update 🔄**
 
    Stay at the forefront of cybersecurity with the built-in update mechanism. Keep your toolkit current with the latest features and scripts, ensuring it remains a future-proof solution for advanced users.
 
-5. **User-Friendly Interface 🤝**
+6. **User-Friendly Interface 🤝**
 
    Designed for efficiency, the interface caters to both cybersecurity novices and seasoned professionals. Advanced options are accessible and intuitively organized for seamless navigation.
 
@@ -51,7 +55,7 @@ Fagun with Bugs offers an impressive array of features, honed to perfection for 
 
 To embark on an advanced network scanning expedition with Fagun with Bugs, follow these precise steps:
 
-1. Clone the Fagun with Bugs repository using the following command:
+1. Clone the Fagun with the Bugs repository using the following command:
 
    ```bash
    git clone https://github.com/fagun18/Fagun_with_Bugs.git
