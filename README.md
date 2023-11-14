@@ -58,13 +58,13 @@ To embark on an advanced network scanning expedition with Fagun with Bugs, follo
 1. Clone the Fagun with the Bugs repository using the following command:
 
    ```bash
-   git clone https://github.com/fagun18/Fagun_with_Bugs.git
+   git clone https://github.com/fagun18/Fagun_with_bugs.git
    ```
 
 2. Navigate to the cloned directory:
 
   ```bash
-cd Fagun_with_Bugs
+cd Fagun_with_bugs
   ```
 
 3. Execute the tool:
