@@ -16,7 +16,7 @@ Fagun with Bugs is an advanced network scanning tool tailored for cybersecurity 
 
 For the full documentation and detailed information about each feature, please visit:
 
-[Full Documentation](https://fagun18.github.io/FagunWithBugs/project/fagun_toolkit.html)
+[Full Documentation](https://fagun18.github.io/FagunWithBugs//project/fagun_with_bugs.html)
 
 
 ## Introduction 🚀
